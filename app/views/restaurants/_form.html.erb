@@ -1,0 +1,28 @@
+<%= form_for(@restaurant) do |f| %>
+<% if @restaurant.errors.any? %>
+  <ul>
+    <% @restaurant.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address %>
+  </div>
+  <div class="field">
+    <%= f.label :phone_number %><br>
+    <%= f.text_area :phone_number %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.input :category, collection: Restaurant::CATEGORIES, prompt: "Select category" %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
